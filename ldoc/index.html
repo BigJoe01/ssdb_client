@@ -1,0 +1,2226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Command line</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>ssdb</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ssdb</code></h1>
+<p></p>
+<p>Lua ssdb c module.
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: 2017</li>
+        <li><strong>License</strong>: MIT/X11</li>
+        <li><strong>Author</strong>: Joe Oszlanczi rawengroup@gmail.com</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#SSDB_CHECK">SSDB_CHECK (l, int)</a></td>
+	<td class="summary">Internal, check userdata type and convert to ssdb client</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SSDB_NEW">SSDB_NEW (l, host, port)</a></td>
+	<td class="summary">Internal, create new ssdb client and userdata</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#conver_vector_to_table">conver_vector_to_table (array, l)</a></td>
+	<td class="summary">internal, convert vector to lua table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#conver_vectormap_to_table">conver_vectormap_to_table (array, l)</a></td>
+	<td class="summary">internal, convert vector stored map to lua table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#conver_vectormap_to_table">conver_vectormap_to_table (array, l)</a></td>
+	<td class="summary">internal, convert lua table to array list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#convert_lua_table_map">convert_lua_table_map (map, l)</a></td>
+	<td class="summary">internal, convert lua table to map list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#convert_lua_table_map">convert_lua_table_map (map, l)</a></td>
+	<td class="summary">internal, convert lua table to map list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#connect">connect (ip, port)</a></td>
+	<td class="summary">create new ssdb client</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#__gc">__gc (instance)</a></td>
+	<td class="summary">destroy client instance</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#error_status">error_status (status)</a></td>
+	<td class="summary">generate error status for lua result</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dbsize">dbsize (instance)</a></td>
+	<td class="summary">get database size</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_kv_range">get_kv_range (instance)</a></td>
+	<td class="summary">get kv range</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_kv_range">set_kv_range (instance, string, string)</a></td>
+	<td class="summary">set kv range</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set">set (instance, string, string)</a></td>
+	<td class="summary">set key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (instance, string)</a></td>
+	<td class="summary">get key value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_ttl">set_ttl (instance, string, string, number)</a></td>
+	<td class="summary">set key/value with ttl</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#del">del (instance, string)</a></td>
+	<td class="summary">del key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#inc">inc (instance, string, number)</a></td>
+	<td class="summary">increment key value by value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#keys">keys (instance, strig, string, number)</a></td>
+	<td class="summary">get keys from range, with limit</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#scan">scan (instance, string, string, number)</a></td>
+	<td class="summary">scan get names and values from range with limit</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rscan">rscan (instance, key_start, key_end, limit)</a></td>
+	<td class="summary">reverse scan keys and values</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_del">multi_del (instance, keys)</a></td>
+	<td class="summary">multi delete keys</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_set">multi_set (instance, keyval)</a></td>
+	<td class="summary">multi set key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_get">multi_get (instance, keys)</a></td>
+	<td class="summary">multi get key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hget">hget (instance, hashmap_name, key)</a></td>
+	<td class="summary">get hash map key value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hset">hset (instance, hashmap_name, key, value)</a></td>
+	<td class="summary">set hash map key value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hdel">hdel (instance, hashmap_name, key)</a></td>
+	<td class="summary">delete hash map key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hincr">hincr (instance, hashmap_name, key, inc)</a></td>
+	<td class="summary">increment hash map key value by value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hsize">hsize (instance, hashmap_name)</a></td>
+	<td class="summary">get size of hashmap</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hclear">hclear (instance, hashmap_name)</a></td>
+	<td class="summary">clear hashmap</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hkeys">hkeys (instance, hashmap_name, start_range, end_range, limit)</a></td>
+	<td class="summary">get hashmap keys from start end range</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hgetall">hgetall (instance, hashmap_name)</a></td>
+	<td class="summary">get all hashmap key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hscan">hscan (instance, hashmap_name, start_range, end_range, limit)</a></td>
+	<td class="summary">scan all hasmap value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hkeys">hkeys (instance, hashmap_name, start_range, end_range, limit)</a></td>
+	<td class="summary">reverse scan all hasmap value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_hget">multi_hget (instance, hashmap_name, keys)</a></td>
+	<td class="summary">hash map get multiple key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_hset">multi_hset (instance, hashmap_name, aKV)</a></td>
+	<td class="summary">hash map set multiple key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_del">multi_del (instance, hashmap_name, keys)</a></td>
+	<td class="summary">hash map del multiple key/value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#qpop">qpop (instance, list_name, pop_size)</a></td>
+	<td class="summary">pop item or items from list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#qclear">qclear (instance, list_name)</a></td>
+	<td class="summary">clear list item</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#qpop">qpop (instance, list_name, limit)</a></td>
+	<td class="summary">pop list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#qslice">qslice (instance, list_name, posBegin, posEnd)</a></td>
+	<td class="summary">slice list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zset">zset (instance, key, value, score)</a></td>
+	<td class="summary">set the score in ordered set</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zget">zget (instance, key, value)</a></td>
+	<td class="summary">get the score from spefied key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zdel">zdel (instance, key, value)</a></td>
+	<td class="summary">delete specified key from ordered list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zincr">zincr (instance, key, value, increment)</a></td>
+	<td class="summary">increment specified key score</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zsize">zsize (instance, key)</a></td>
+	<td class="summary">get zset size</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zclear">zclear (instance, key)</a></td>
+	<td class="summary">clear zorder list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zrange">zrange (instance, key, offset, limit)</a></td>
+	<td class="summary">get items from zlist range</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zrrange">zrrange (instance, key, offset, limit)</a></td>
+	<td class="summary">get items from zlist range, in reversed order</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zkeys">zkeys (instance, key, key_start, score_start, score_end, limit)</a></td>
+	<td class="summary">get keys from zlist, with specified params</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zscan">zscan (instance, key, key_start, score_start, score_end, limit)</a></td>
+	<td class="summary">scans values in zlist</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zrscan">zrscan (instance, key, key_start, score_start, score_end, limit)</a></td>
+	<td class="summary">reverse scan vailes in ordered list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_zget">multi_zget (instance, key, keys)</a></td>
+	<td class="summary">get ordered list multiple value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_zget">multi_zget (instance, key, keys_score)</a></td>
+	<td class="summary">set ordered list values</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#multi_zget">multi_zget (instance, key, keys_score)</a></td>
+	<td class="summary">set ordered list values</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "SSDB_CHECK"></a>
+    <strong>SSDB_CHECK (l, int)</strong>
+    </dt>
+    <dd>
+    Internal, check userdata type and convert to ssdb client
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+        <li><span class="parameter">int</span>
+         iIndex
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        ssdb::client
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SSDB_NEW"></a>
+    <strong>SSDB_NEW (l, host, port)</strong>
+    </dt>
+    <dd>
+    Internal, create new ssdb client and userdata
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+        <li><span class="parameter">host</span>
+         string host address
+        </li>
+        <li><span class="parameter">port</span>
+         connection port number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        ssdb::client
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "conver_vector_to_table"></a>
+    <strong>conver_vector_to_table (array, l)</strong>
+    </dt>
+    <dd>
+    internal, convert vector to lua table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">array</span>
+         string vector
+        </li>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "conver_vectormap_to_table"></a>
+    <strong>conver_vectormap_to_table (array, l)</strong>
+    </dt>
+    <dd>
+    internal, convert vector stored map to lua table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">array</span>
+         string vector, contains map
+        </li>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "conver_vectormap_to_table"></a>
+    <strong>conver_vectormap_to_table (array, l)</strong>
+    </dt>
+    <dd>
+    internal, convert lua table to array list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">array</span>
+         string vector, contains map
+        </li>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "convert_lua_table_map"></a>
+    <strong>convert_lua_table_map (map, l)</strong>
+    </dt>
+    <dd>
+    internal, convert lua table to map list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map</span>
+         contains string map
+        </li>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "convert_lua_table_map"></a>
+    <strong>convert_lua_table_map (map, l)</strong>
+    </dt>
+    <dd>
+    internal, convert lua table to map list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map</span>
+         contains string map
+        </li>
+        <li><span class="parameter">l</span>
+         lua_state
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "connect"></a>
+    <strong>connect (ip, port)</strong>
+    </dt>
+    <dd>
+    create new ssdb client
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ip</span>
+         remote address
+        </li>
+        <li><span class="parameter">port</span>
+         remote port
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        client</li>
+        <li>
+        bool connection success to server</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "__gc"></a>
+    <strong>__gc (instance)</strong>
+    </dt>
+    <dd>
+    destroy client instance
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::Client
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "error_status"></a>
+    <strong>error_status (status)</strong>
+    </dt>
+    <dd>
+    generate error status for lua result
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">status</span>
+         ssdb::Status
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        bool true is success</li>
+        <li>
+        string error type string [ optional ] 'connection', 'notfound', 'unknown'</li>
+        <li>
+        string error code string [ optional ]</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dbsize"></a>
+    <strong>dbsize (instance)</strong>
+    </dt>
+    <dd>
+    get database size
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        number current database size</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_kv_range"></a>
+    <strong>get_kv_range (instance)</strong>
+    </dt>
+    <dd>
+    get kv range
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        bool true is success</li>
+        <li>
+        string start range or empty string</li>
+        <li>
+        string end range or empty string</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "set_kv_range"></a>
+    <strong>set_kv_range (instance, string, string)</strong>
+    </dt>
+    <dd>
+    set kv range
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         kv end range
+        </li>
+        <li><span class="parameter">string</span>
+         kv end range
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "set"></a>
+    <strong>set (instance, string, string)</strong>
+    </dt>
+    <dd>
+    set key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         value
+        </li>
+        <li><span class="parameter">string</span>
+         value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (instance, string)</strong>
+    </dt>
+    <dd>
+    get key value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        bool true is success</li>
+        <li>
+        string value</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "set_ttl"></a>
+    <strong>set_ttl (instance, string, string, number)</strong>
+    </dt>
+    <dd>
+    set key/value with ttl
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         value
+        </li>
+        <li><span class="parameter">string</span>
+         value
+        </li>
+        <li><span class="parameter">number</span>
+         ttl
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "del"></a>
+    <strong>del (instance, string)</strong>
+    </dt>
+    <dd>
+    del key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "inc"></a>
+    <strong>inc (instance, string, number)</strong>
+    </dt>
+    <dd>
+    increment key value by value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         name
+        </li>
+        <li><span class="parameter">number</span>
+         incby
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        bool true is success</li>
+        <li>
+        number new value</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "keys"></a>
+    <strong>keys (instance, strig, string, number)</strong>
+    </dt>
+    <dd>
+    get keys from range, with limit
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">strig</span>
+         key_start empty string or starter value
+        </li>
+        <li><span class="parameter">string</span>
+         key_end empty string or end value
+        </li>
+        <li><span class="parameter">number</span>
+         limit key limit size
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        bool true is success</li>
+        <li>
+        table with key values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "scan"></a>
+    <strong>scan (instance, string, string, number)</strong>
+    </dt>
+    <dd>
+    scan get names and values from range with limit
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">string</span>
+         end key or empty string
+        </li>
+        <li><span class="parameter">string</span>
+         end key or empty string
+        </li>
+        <li><span class="parameter">number</span>
+         key limit size
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        bool true is success</li>
+        <li>
+        table with keys and values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "rscan"></a>
+    <strong>rscan (instance, key_start, key_end, limit)</strong>
+    </dt>
+    <dd>
+    reverse scan keys and values
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key_start</span>
+         empty string or starter value
+        </li>
+        <li><span class="parameter">key_end</span>
+         empty string or end value
+        </li>
+        <li><span class="parameter">limit</span>
+         key limit size
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        kv table with keys and values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_del"></a>
+    <strong>multi_del (instance, keys)</strong>
+    </dt>
+    <dd>
+    multi delete keys
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">keys</span>
+         array table with keys
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        keycount number of keys processed</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_set"></a>
+    <strong>multi_set (instance, keyval)</strong>
+    </dt>
+    <dd>
+    multi set key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">keyval</span>
+         table with keys and values
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        keycount number of keys processed</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_get"></a>
+    <strong>multi_get (instance, keys)</strong>
+    </dt>
+    <dd>
+    multi get key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">keys</span>
+         table with keys
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        kv_table table with keys and values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hget"></a>
+    <strong>hget (instance, hashmap_name, key)</strong>
+    </dt>
+    <dd>
+    get hash map key value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        value</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hset"></a>
+    <strong>hset (instance, hashmap_name, key, value)</strong>
+    </dt>
+    <dd>
+    set hash map key value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hdel"></a>
+    <strong>hdel (instance, hashmap_name, key)</strong>
+    </dt>
+    <dd>
+    delete hash map key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hincr"></a>
+    <strong>hincr (instance, hashmap_name, key, inc)</strong>
+    </dt>
+    <dd>
+    increment hash map key value by value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">inc</span>
+         increment value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        new_value incremented new value</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hsize"></a>
+    <strong>hsize (instance, hashmap_name)</strong>
+    </dt>
+    <dd>
+    get size of hashmap
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        size size of hash map items</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hclear"></a>
+    <strong>hclear (instance, hashmap_name)</strong>
+    </dt>
+    <dd>
+    clear hashmap
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        size size of cleared items</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hkeys"></a>
+    <strong>hkeys (instance, hashmap_name, start_range, end_range, limit)</strong>
+    </dt>
+    <dd>
+    get hashmap keys from start end range
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">start_range</span>
+
+        </li>
+        <li><span class="parameter">end_range</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table with keys</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hgetall"></a>
+    <strong>hgetall (instance, hashmap_name)</strong>
+    </dt>
+    <dd>
+    get all hashmap key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table with keys/values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hscan"></a>
+    <strong>hscan (instance, hashmap_name, start_range, end_range, limit)</strong>
+    </dt>
+    <dd>
+    scan all hasmap value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">start_range</span>
+
+        </li>
+        <li><span class="parameter">end_range</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table with keys</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "hkeys"></a>
+    <strong>hkeys (instance, hashmap_name, start_range, end_range, limit)</strong>
+    </dt>
+    <dd>
+    reverse scan all hasmap value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">start_range</span>
+
+        </li>
+        <li><span class="parameter">end_range</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table with keys</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_hget"></a>
+    <strong>multi_hget (instance, hashmap_name, keys)</strong>
+    </dt>
+    <dd>
+    hash map get multiple key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">keys</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table with keys/values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_hset"></a>
+    <strong>multi_hset (instance, hashmap_name, aKV)</strong>
+    </dt>
+    <dd>
+    hash map set multiple key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">aKV</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_del"></a>
+    <strong>multi_del (instance, hashmap_name, keys)</strong>
+    </dt>
+    <dd>
+    hash map del multiple key/value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">hashmap_name</span>
+
+        </li>
+        <li><span class="parameter">keys</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "qpop"></a>
+    <strong>qpop (instance, list_name, pop_size)</strong>
+    </dt>
+    <dd>
+    pop item or items from list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">list_name</span>
+
+        </li>
+        <li><span class="parameter">pop_size</span>
+         if size not defined, only one item get
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        values if size not defined returns single value else returns table</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "qclear"></a>
+    <strong>qclear (instance, list_name)</strong>
+    </dt>
+    <dd>
+    clear list item
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">list_name</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "qpop"></a>
+    <strong>qpop (instance, list_name, limit)</strong>
+    </dt>
+    <dd>
+    pop list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">list_name</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        value(s) returns table or value</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "qslice"></a>
+    <strong>qslice (instance, list_name, posBegin, posEnd)</strong>
+    </dt>
+    <dd>
+    slice list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">list_name</span>
+
+        </li>
+        <li><span class="parameter">posBegin</span>
+
+        </li>
+        <li><span class="parameter">posEnd</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        values table with values</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zset"></a>
+    <strong>zset (instance, key, value, score)</strong>
+    </dt>
+    <dd>
+    set the score in ordered set
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+        <li><span class="parameter">score</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zget"></a>
+    <strong>zget (instance, key, value)</strong>
+    </dt>
+    <dd>
+    get the score from spefied key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        score</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zdel"></a>
+    <strong>zdel (instance, key, value)</strong>
+    </dt>
+    <dd>
+    delete specified key from ordered list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        success true is success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zincr"></a>
+    <strong>zincr (instance, key, value, increment)</strong>
+    </dt>
+    <dd>
+    increment specified key score
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+        <li><span class="parameter">increment</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        new_score</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zsize"></a>
+    <strong>zsize (instance, key)</strong>
+    </dt>
+    <dd>
+    get zset size
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        size</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zclear"></a>
+    <strong>zclear (instance, key)</strong>
+    </dt>
+    <dd>
+    clear zorder list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        delsize</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zrange"></a>
+    <strong>zrange (instance, key, offset, limit)</strong>
+    </dt>
+    <dd>
+    get items from zlist range
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">offset</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zrrange"></a>
+    <strong>zrrange (instance, key, offset, limit)</strong>
+    </dt>
+    <dd>
+    get items from zlist range, in reversed order
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">offset</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zkeys"></a>
+    <strong>zkeys (instance, key, key_start, score_start, score_end, limit)</strong>
+    </dt>
+    <dd>
+    get keys from zlist, with specified params
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">key_start</span>
+
+        </li>
+        <li><span class="parameter">score_start</span>
+
+        </li>
+        <li><span class="parameter">score_end</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zscan"></a>
+    <strong>zscan (instance, key, key_start, score_start, score_end, limit)</strong>
+    </dt>
+    <dd>
+    scans values in zlist
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">key_start</span>
+
+        </li>
+        <li><span class="parameter">score_start</span>
+
+        </li>
+        <li><span class="parameter">score_end</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "zrscan"></a>
+    <strong>zrscan (instance, key, key_start, score_start, score_end, limit)</strong>
+    </dt>
+    <dd>
+    reverse scan vailes in ordered list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">key_start</span>
+
+        </li>
+        <li><span class="parameter">score_start</span>
+
+        </li>
+        <li><span class="parameter">score_end</span>
+
+        </li>
+        <li><span class="parameter">limit</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_zget"></a>
+    <strong>multi_zget (instance, key, keys)</strong>
+    </dt>
+    <dd>
+    get ordered list multiple value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">keys</span>
+         table with keys
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items with score</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_zget"></a>
+    <strong>multi_zget (instance, key, keys_score)</strong>
+    </dt>
+    <dd>
+    set ordered list values
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">keys_score</span>
+         table
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "multi_zget"></a>
+    <strong>multi_zget (instance, key, keys_score)</strong>
+    </dt>
+    <dd>
+    set ordered list values
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance</span>
+         ssdb::client
+        </li>
+        <li><span class="parameter">key</span>
+
+        </li>
+        <li><span class="parameter">keys_score</span>
+         table
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        success true is success</li>
+        <li>
+        table items in range</li>
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#error_status">error_status</a>
+    </ul>
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.5</a></i>
+<i style="float:right;">Last updated 2017-05-16 12:41:15 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

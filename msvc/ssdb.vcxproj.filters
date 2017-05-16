@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="client">
+      <UniqueIdentifier>{3b7aab64-ff55-4944-8bf2-2ac4a5995094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{3d0dfff5-86af-4241-9ef6-e8e04fdb90d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\link.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lua_helper.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lua_ssdb.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ssdb_bytes.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SSDB_client.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SSDB_impl.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ssdb_strings.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\win_getopt.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\win_unistd.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua\lauxlib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua\lua.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua\luaconf.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lua\lualib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\link.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\lua_ssdb.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\ssdb_bytes.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\SSDB_impl.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\win_getopt.c">
+      <Filter>client</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
